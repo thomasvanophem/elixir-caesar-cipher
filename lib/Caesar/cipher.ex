@@ -19,16 +19,17 @@ defmodule Caesar.Cipher do
     # iterate over list apply shift mapping
     # return list as a binary string
     Logger.debug("encrypting \"#{message}\" with  a shift number: #{shift}")
-    message 
-      |> to_charlist
-      |> Enum.map(&shift_char(&1, shift))
-      |> List.to_string
+
+    message
+    |> to_charlist
+    |> Enum.map(&shift_char(&1, shift))
+    |> List.to_string()
   end
 
   def shift_char(char, shift) do
     case char do
-      char when char in (?a..?z) -> calculate_mapping(?a, char, shift)
-      char when char in (?A..?z) -> calculate_mapping(?A, char, shift)
+      char when char in ?a..?z -> calculate_mapping(?a, char, shift)
+      char when char in ?A..?z -> calculate_mapping(?A, char, shift)
       char -> char
     end
   end
